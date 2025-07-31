@@ -1,1 +1,1 @@
-# init.lua
+# Eric's neovim config

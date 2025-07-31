@@ -10,6 +10,13 @@ return {
     config = function()
         local builtin = require('telescope.builtin')
         local actions = require('telescope.actions')
+        vim.keymap.set('n', '<leader>gf', function()
+            local cwd = vim.fn.fnamemodify(vim.fn.expand('%:p'), ':h')
+            vim.cmd('cd' .. cwd)
+            builtin.git_files()
+        end,
+        { desc = 'Git files (current buffer dir)' }
+    )
         vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find files' })
         vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live grep' })
         vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
